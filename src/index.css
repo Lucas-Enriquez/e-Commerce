@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.shopping-cart-icon {
+  color: #ffff; size:2em; color:white; font-size:31px;
+  cursor: pointer;
+  transition: color .2s;
+}
+.shopping-cart-icon:hover {
+  color: #a7a7a7;
+}
+
+.user-icon {
+  color: #ffff; font-size:4 em; color:#2e2e2e; font-size:34px;
+  cursor: pointer;
+  transition: color .2s;
+}
+.user-icon:hover {
+  color: #a7a7a7;
+}
