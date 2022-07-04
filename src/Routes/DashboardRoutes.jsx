@@ -4,10 +4,10 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import { Navbar } from '../Components/UI/Navbar'
 import { ProductsContext } from '../context/CartContext'
 import { Cart } from '../Pages/dashboard/Cart'
-import Catalog from '../Pages/dashboard/Catalog'
 import { CheckoutScreen } from '../Pages/dashboard/CheckoutScreen'
 import { HomeScreen } from '../Pages/dashboard/HomeScreen'
 import { Product } from '../Pages/dashboard/Product'
+import { Sell } from '../Pages/dashboard/Sell'
 import { cartReducer, initialState } from '../Reducers/cartReducer'
 
 export const ScrollToTop = ({ children }) => {
@@ -29,10 +29,10 @@ export const DashboardRoutes = () => {
           <Routes>
             {/* <Route path="/*" element={<Navigate to={"/"}/>}/> */}
             <Route path='/' element={<HomeScreen />} />
-            <Route path='/catalog/:pageNumber' element={<Catalog />} />
             <Route path='/product/:productId' element={<Product />} />
             <Route path='cart' element={<Cart />} />
             <Route path='checkout' element={<CheckoutScreen />} />
+            <Route path='sell' element={<Sell />} />
           </Routes>
         </ScrollToTop>
       </ProductsContext.Provider>

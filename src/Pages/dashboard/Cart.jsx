@@ -6,21 +6,14 @@ import { useCart } from '../../Hooks/useCart'
 
 import { useNavigate } from 'react-router-dom'
 
-// export const stripePK = 'pk_test_51KTd1dCxJ8HWxsAUvHdkJU90wXuUHO4qa4bF5dq3A7kCPWLAiaPnQ4bDpvBqIVMHPdABDwVMODmDff6jl8ok59OJ00SeHORvaW'
-
 export const Cart = () => {
   const { state, dispatch } = useContext(ProductsContext)
 
   const navigate = useNavigate()
 
-  // const prices = state.items.map(product => product.modifiedPrice)
-
-  // const total = prices.reduce((acc, el) => acc + el, 0).toFixed(3)
-
   const prices = state.items.map(item => item.price * item.amount)
 
   const total = prices.reduce((acc, el) => acc + el, 0)
-  console.log(total)
 
   const { getMyCart, deleteFromCart, items } = useCart()
 
@@ -28,8 +21,6 @@ export const Cart = () => {
     getMyCart()
     dispatch({ type: 'UPDATE', payload: state.items })
   }, [state.items.length])
-
-  console.log({ state })
 
   const handleDeleteItem = (id) => {
     deleteFromCart({ idProduct: id }).then(() => dispatch({ type: 'UPDATE', payload: items }))
@@ -85,7 +76,7 @@ export const Cart = () => {
                         <button onClick={() => handleIncreaseAmount(product._id, product.amount)} className='border-gray-300 px-2 text-2xl  text-blue-600 hover:text-blue-300 transition-colors ease-in-out'>+</button>
                       </div>
                       <div className='price__container flex items-center'>
-                        <h3 className='text-xl'>${product.price * product.amount}</h3>
+                        <h3 className='text-xl'>${(product.price * product.amount).toFixed(2)}</h3>
                       </div>
                     </div>
                   </div>
@@ -93,7 +84,7 @@ export const Cart = () => {
                 </div>
               ))}
               <div className='total__container flex justify-end py-2'>
-                <h4 className='font-light text-2xl'>Total: ${total}</h4>
+                <h4 className='font-light text-2xl'>Total: ${total.toFixed(2)}</h4>
               </div>
               <hr />
               <button onClick={() => navigate('/checkout')} className='p-3 text-white font-thin bg-blue-500 w-48 rounded-md self-end hover:bg-blue-400 transition-colors ease-in-out'>Continue to checkout</button>

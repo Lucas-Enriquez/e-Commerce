@@ -40,8 +40,6 @@ export const Product = () => {
     }, 2000)
   }
 
-  console.log({ items })
-
   return (
     <>
       <main className='bg-gray-100 min-h-screen'>
@@ -51,7 +49,7 @@ export const Product = () => {
             ? <Spinner />
             : <div key={selectedProduct._id} className='bg-white px-3 py-4 flex flex-col gap-5 justify-between items-center md:flex-row'>
               <div className='flex gap-1 flex-col '>
-                <div className='self-center md:self-start flex gap-2'>
+                <div className='self-center md:self-start flex gap-2 max-h-14'>
                   {selectedProduct.images.map((image, idx) => (<img width='50px' height='50px' key={idx} className='border overflow-hidden object-cover' src={image} />))}
                 </div>
                 <div className='flex flex-col gap-5 md:flex-row'>
@@ -70,7 +68,7 @@ export const Product = () => {
                   </div>
                 </div>
               </div>
-              <div className='btn-container w-4/6 md:w-2/6 flex flex-col gap-2 md:self-start'>
+              <div className='btn-container w-4/6 md:w-2/6 flex flex-col gap-2 md:self-start md:mt-14'>
                 <button onClick={() => handleAddToCart(selectedProduct._id)} className='bg-yellow-400 text-sm text-slate-800 p-2 rounded-3xl w-full font-normal hover:shadow-xl hover:bg-yellow-500 transition-all ease-in-out'>Add to cart</button>
                 <button className='bg-orange-400 p-2 rounded-3xl w-full font-normal hover:shadow-xl text-sm hover:bg-orange-500 transition-all ease-in-out'>Buy now</button>
               </div>

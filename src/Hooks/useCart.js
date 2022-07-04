@@ -12,7 +12,6 @@ export const useCart = () => {
     const { data } = await eCommerceApi.get('/cart', {
       withCredentials: true
     })
-    console.log(data)
     dispatch({ type: 'UPDATE', payload: data })
   }
 

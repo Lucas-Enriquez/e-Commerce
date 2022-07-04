@@ -32,7 +32,10 @@ export const post = async (url, data) => {
 export const put = async (url, data) => {
   try {
     const result = await eCommerceApi.put(url, data, {
-      withCredentials: true
+      withCredentials: true,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
     })
     return result.data
   } catch (error) {
