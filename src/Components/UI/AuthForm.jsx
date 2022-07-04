@@ -1,6 +1,6 @@
 import { useForm } from '../../Hooks/useForm'
 import { Link, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { GoogleButton } from './GoogleButton'
 
 export const AuthForm = ({ registerUser, loginUser }) => {
   const [formValues, handleInputChange] = useForm()
@@ -9,11 +9,12 @@ export const AuthForm = ({ registerUser, loginUser }) => {
 
   const handleSubmitForm = (e) => {
     e.preventDefault()
+    if (pathname === '/auth/register') {
+      registerUser(formValues)
+    } else if (pathname === '/auth/login') {
+      loginUser(formValues)
+    }
   }
-
-  useEffect(() => {
-    console.log(formValues)
-  }, [formValues])
 
   return (
     <div className='form-container flex justify-around flex-col'>
@@ -60,14 +61,14 @@ export const AuthForm = ({ registerUser, loginUser }) => {
         </div>
         {pathname === '/auth/register' && <p>Already registered? <Link to='/auth/login' className='text-blue-700 hover:text-blue-400 hover:underline'>Login</Link></p>}
         {pathname === '/auth/register'
-          ? (<button onClick={() => registerUser(formValues)} type='submit' className='font-bold bg-blue-500 text-zinc-50 px-5 py-2 rounded hover:bg-blue-400 ease-in duration-150'>Create Account</button>)
-          : (<button onClick={() => loginUser(formValues)} type='submit' className='font-bold bg-blue-500 text-zinc-50 px-5 py-2 rounded hover:bg-blue-400 ease-in duration-150'>Login</button>)}
+          ? (<button type='submit' className='font-bold bg-blue-500 text-zinc-50 px-5 py-2 rounded hover:bg-blue-400 ease-in duration-150'>Create Account</button>)
+          : (<button type='submit' className='font-bold bg-blue-500 text-zinc-50 px-5 py-2 rounded hover:bg-blue-400 ease-in duration-150'>Login</button>)}
+        <GoogleButton />
       </form>
       {pathname === '/auth/login' &&
         <button className='bg-gradient-to-r text-gray-500 w-72 mt-5 mx-auto p-2 rounded-lg'>
           <Link to='/auth/register' className='hover:underline font-semibold'>Create your E-Commerce account</Link>
         </button>}
-
     </div>
   )
 }

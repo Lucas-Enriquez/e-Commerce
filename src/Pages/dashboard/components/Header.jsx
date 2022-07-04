@@ -44,15 +44,15 @@ export const Header = () => {
 
   return (
     <>
-      <header className={`relative bg-center ${selectedImage} transition-all ease-in h-96 bg-no-repeat bg-cover flex justify-center items-center bg-black bg-opacity-100 animate__animated animate__slideInRight`}>
+      <header className={`relative bg-center ${selectedImage} transition-all ease-in h-96 bg-no-repeat bg-cover flex justify-center items-center bg-black bg-opacity-100`}>
         <div className='absolute inset-0 bg-gray-900 bg-opacity-50' />
         <div className='max-w-lg w-full h-auto flex justify-center items-center relative '>
           <h1 className='text-white font-thin tracking-wide italic p-7 border-2 border-white text-5xl text-center'>
             Eso que buscas
           </h1>
           <div className='absolute gap-5 flex top-48'>
-            <button className='border-2 border-slate-400 bg-slate-100 p-3 rounded-full font-extrabold hover:opacity-70 transition-opacity ease-out' onClick={previous}><GrPrevious /></button>
-            <button className='border-2 border-slate-400 bg-slate-100 p-3 rounded-full font-extrabold hover:opacity-70 transition-opacity ease-out' onClick={next}><GrNext /></button>
+            <button className='outline-none border-2 border-slate-400 bg-slate-100 p-3 rounded-full font-extrabold hover:opacity-70 transition-opacity ease-out' onClick={previous}><GrPrevious /></button>
+            <button className='outline-none border-2 border-slate-400 bg-slate-100 p-3 rounded-full font-extrabold hover:opacity-70 transition-opacity ease-out' onClick={next}><GrNext /></button>
           </div>
         </div>
       </header>

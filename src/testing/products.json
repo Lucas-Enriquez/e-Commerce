@@ -1,0 +1,44 @@
+[
+	{
+		"id": 1,
+		"title": "Microsoft Surface Pro",
+		"price": 276,
+		"curr": "ARS",
+		"thumbnailUrl": "https://http2.mlstatic.com/D_Q_NP_668966-MLA48805531439_012022-AB.webp"
+	},
+	{
+		"id": 2,
+		"title": "BMW 1 series 1.6 120i M Package 177cv",
+		"price": 29.99,
+		"curr": "USD",
+		"thumbnailUrl": "https://http2.mlstatic.com/D_NQ_NP_741750-MLA50292889023_062022-W.webp"
+	},
+	{
+		"id": 3,
+		"title": "Wireless Mouse Logitech Master Series MX",
+		"price": 36.107,
+		"curr": "ARS",
+		"thumbnailUrl": "https://http2.mlstatic.com/D_Q_NP_620177-MLA43229493758_082020-AB.webp"
+	},
+	{
+		"id": 4,
+		"title": "In-ear wireless headphones Haylou GT Series",
+		"price": 3.122,
+		"curr": "ARS",
+		"thumbnailUrl": "https://http2.mlstatic.com/D_Q_NP_698056-MLA40809199286_022020-AB.webp"
+	},
+	{
+		"id": 5,
+		"title": "Kitchen Chair black color 6 units",
+		"price": 32.999,
+		"curr": "ARS",
+		"thumbnailUrl": "https://http2.mlstatic.com/D_NQ_NP_821239-MLA49011815530_022022-W.webp"
+	},
+	{
+		"id": 6,
+		"title": "Samsung Galaxy S20 FE 5G 128 GB cloud mint 6 GB RAM",
+		"price": 89.999,
+		"curr": "ARS",
+		"thumbnailUrl": "https://http2.mlstatic.com/D_NQ_NP_951607-MLA50131748620_052022-V.webp"
+	}
+]

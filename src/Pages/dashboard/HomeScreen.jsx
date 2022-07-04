@@ -1,40 +1,41 @@
-import React from 'react'
+import React, { Suspense, useEffect /* useState */ } from 'react'
+import { Spinner } from '../../Components/UI/Spinner'
+import { useProducts } from '../../Hooks/useProducts'
+// import { getProducts } from '../../utils/getProducts'
+
 import { Header } from './components/Header'
+// import { Pagination } from './components/Pagination'
+
+const ProductCard = React.lazy(() => import('./components/ProductCard'))
 
 export const HomeScreen = () => {
+  const { products, getAllProducts } = useProducts()
+
+  useEffect(() => {
+    getAllProducts()
+  }, [])
+
+  // const [products, setProducts] = useState([])
+
+  // const [page, setPage] = useState(1)
+  // const [productsPerPage, setProductsPerPage] = useState(10)
+
+  // useEffect(() => {
+  //   getProducts().then((products) => setProducts(products))
+  // }, [page])
+
+  // const indexOfLastProduct = page * productsPerPage
+  // const indexOfFirstProduct = indexOfLastProduct - productsPerPage
+  // const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct)
+
   return (
     <>
       <Header />
-      <main className='bg-slate-100 '>
-        <div className='grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-row-dense justify-items-center py-5 max-w-7xl m-auto'>
-
-          <div className='relative overflow-hidden bg-no-repeat bg-cover max-w-xs cursor-pointer'>
-            <img src='https://mdbcdn.b-cdn.net/img/new/fluid/city/113.webp' className='max-w-xs' alt='Louvre' />
-            <div className='absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden opacity-0 transition duration-300 ease-in-out bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-70' />
-          </div>
-          <div className='relative overflow-hidden bg-no-repeat bg-cover max-w-xs cursor-pointer'>
-            <img src='https://mdbcdn.b-cdn.net/img/new/fluid/city/113.webp' className='max-w-xs' alt='Louvre' />
-            <div className='absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden opacity-0 transition duration-300 ease-in-out bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-70' />
-          </div>
-          <div className='relative overflow-hidden bg-no-repeat bg-cover max-w-xs cursor-pointer'>
-            <img src='https://mdbcdn.b-cdn.net/img/new/fluid/city/113.webp' className='max-w-xs' alt='Louvre' />
-            <div className='absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden opacity-0 transition duration-300 ease-in-out bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-70' />
-          </div>
-          <div className='relative overflow-hidden bg-no-repeat bg-cover max-w-xs cursor-pointer'>
-            <img src='https://mdbcdn.b-cdn.net/img/new/fluid/city/113.webp' className='max-w-xs' alt='Louvre' />
-            <div className='absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden opacity-0 transition duration-300 ease-in-out bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-70' />
-          </div>
-          <div className='relative overflow-hidden bg-no-repeat bg-cover max-w-xs cursor-pointer'>
-            <img src='https://mdbcdn.b-cdn.net/img/new/fluid/city/113.webp' className='max-w-xs' alt='Louvre' />
-            <div className='absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden opacity-0 transition duration-300 ease-in-out bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-70' />
-          </div>
-          <div className='relative overflow-hidden bg-no-repeat bg-cover max-w-xs cursor-pointer'>
-            <img src='https://mdbcdn.b-cdn.net/img/new/fluid/city/113.webp' className='max-w-xs' alt='Louvre' />
-            <div className='absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden opacity-0 transition duration-300 ease-in-out bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-70' />
-          </div>
-
-        </div>
-
+      <main className='bg-gray-100 min-h-max pb-5'>
+        <Suspense fallback={<Spinner />}>
+          <ProductCard products={products} />
+        </Suspense>
+        {/* <Pagination products={products} productsPerPage={productsPerPage} page={page} setPage={setPage} setProductsPerPage={setProductsPerPage} /> */}
       </main>
     </>
   )

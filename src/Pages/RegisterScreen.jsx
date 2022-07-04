@@ -1,36 +1,10 @@
-import axios from 'axios'
-import { useContext, useState } from 'react'
 import { HiShoppingBag } from 'react-icons/hi'
-import { useNavigate } from 'react-router-dom'
 import { AuthForm } from '../Components/UI/AuthForm'
-import { AuthContext } from '../context/AuthContext'
+import { useAuth } from '../Hooks/useAuth'
 
 export const RegisterScreen = () => {
-  const navigate = useNavigate()
-  const { setUser, user } = useContext(AuthContext)
+  const { startSignUp, registerErrors } = useAuth()
 
-  const [registerErrors, setRegisterErrors] = useState({
-    errors: false,
-    messages: []
-  })
-
-  const registerUser = async (userData) => {
-    const url = 'https://backendnodejstzuzulcode.uw.r.appspot.com/api/auth/signup'
-    try {
-      const response = await axios.post(url, userData)
-      console.log(response)
-
-      // DISPATCH EL USER INFO
-
-      setUser({ type: 'LOGIN', payload: response.data.user })
-
-      console.log(user)
-      navigate('/')
-    } catch (error) {
-      const { errors } = error.response.data
-      setRegisterErrors({ errors: true, messages: [...errors] })
-    }
-  }
   return (
     <>
       <div className='bg-gray-500 flex flex-col h-screen'>
@@ -46,7 +20,7 @@ export const RegisterScreen = () => {
             </div>
           </nav>
 
-          <AuthForm registerUser={registerUser} />
+          <AuthForm registerUser={startSignUp} />
           {registerErrors.errors && (
             <div className='gap-2 flex flex-col w-auto max-w-screen-md mx-auto m-5 text-center'>
               {registerErrors.messages.map((error, idx) => (
